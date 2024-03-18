@@ -19,14 +19,7 @@ jobs:
         channel: 'stable'
     - run: flutter pub get
     - run: flutter build apk --debug
-  build-ios:
-    name: Build for iOS
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: subosito/flutter-action@v2
+    - uses: actions/upload-artifact@v3.1.1
       with:
-        channel: 'stable'
-        architecture: x64
-    - run: flutter pub get
-    - run: flutter build ios --release --no-codesign
+        name: builds # optional, default is artifact
+        path: /home/runner/work/finamp/finamp/build/app/outputs/flutter-apk
